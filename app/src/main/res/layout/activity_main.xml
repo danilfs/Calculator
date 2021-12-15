@@ -9,7 +9,8 @@
     <Button
         android:layout_column="3"
         android:layout_margin="5dp"
-        android:text="/" />
+        android:text="/"
+        android:textColor="@color/black"/>
 
     <Button
         android:layout_margin="5dp"
@@ -25,7 +26,8 @@
 
     <Button
         android:layout_margin="5dp"
-        android:text="*" />
+        android:text="*"
+        android:textColor="@color/black"/>
 
     <Button
         android:layout_margin="5dp"
@@ -41,7 +43,8 @@
 
     <Button
         android:layout_margin="5dp"
-        android:text="-" />
+        android:text="-"
+        android:textColor="@color/black"/>
 
     <Button
         android:layout_margin="5dp"
@@ -59,7 +62,8 @@
         android:layout_rowSpan="3"
         android:layout_gravity="fill"
         android:layout_margin="5dp"
-        android:text="+" />
+        android:text="+"
+        android:textColor="@color/black"/>
 
     <Button
         android:layout_columnSpan="2"
@@ -75,6 +79,7 @@
         android:layout_columnSpan="3"
         android:layout_gravity="fill"
         android:layout_margin="5dp"
-        android:text="=" />
+        android:text="="
+        android:textColor="@color/black"/>
 
 </GridLayout>
