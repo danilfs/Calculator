@@ -1,15 +1,67 @@
 package com.example.mycalculator;
 
-public class CalculatorModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.widget.TextView;
+
+public class CalculatorModel implements Parcelable {
 
     private int firstArg;
     private int secondArg;
-
+    private TextView text;
     private StringBuilder inputStr = new StringBuilder();
 
 
 
     private State state;
+
+    protected CalculatorModel(Parcel in) {
+        firstArg = in.readInt();
+        secondArg = in.readInt();
+    }
+
+    public static final Creator<CalculatorModel> CREATOR = new Creator<CalculatorModel>() {
+        @Override
+        public CalculatorModel createFromParcel(Parcel in) {
+            return new CalculatorModel(in);
+        }
+
+        @Override
+        public CalculatorModel[] newArray(int size) {
+            return new CalculatorModel[size];
+        }
+    };
+
+    public int getFirstArg() {
+        return firstArg;
+    }
+
+    public void setFirstArg(int firstArg) {
+        this.firstArg = firstArg;
+    }
+
+    public int getSecondArg() {
+        return secondArg;
+    }
+
+    public void setSecondArg(int secondArg) {
+        this.secondArg = secondArg;
+    }
+
+    public void setText(TextView text) {
+        this.text = text;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(firstArg);
+        dest.writeInt(secondArg);
+    }
 
     private enum State {
         firstArgInput,
@@ -81,20 +133,20 @@ public class CalculatorModel {
             default:
                 return inputStr.toString();
             case operationSelected:
-                return str.append(firstArg).append(' ')
+                return str.append(getFirstArg()).append(' ')
 
                         .toString();
             case secondArgInput:
-                return str.append(firstArg).append(' ')
+                return str.append(getFirstArg()).append(' ')
 
                         .append(' ')
                         .append(inputStr)
                         .toString();
             case resultShow:
-                return str.append(firstArg).append(' ')
+                return str.append(getFirstArg()).append(' ')
 
                         .append(' ')
-                        .append(secondArg)
+                        .append(getSecondArg())
                         .append(" = ")
                         .append(inputStr.toString())
                         .toString();

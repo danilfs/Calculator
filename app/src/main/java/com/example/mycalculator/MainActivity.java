@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private CalculatorModel calculator;
     private Button SecondActivity;
@@ -51,16 +51,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 calculator.reset();
                 text.setText(calculator.getText());
-            }
-        });
-
-        Button SecondActivity = findViewById(R.id.second_activity);
-        SecondActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent runSettings = new Intent(MainActivity.this,
-                        SecondActivity.class);
-                startActivity(runSettings);
             }
         });
     }
