@@ -1,7 +1,9 @@
 package com.example.mycalculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private CalculatorModel calculator;
-
+    private Button SecondActivity;
     private TextView text;
 
     @Override
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int[] numberIds = new int[] {
+        int[] numberIds = new int[]{
                 R.id.zero,
                 R.id.one,
                 R.id.two,
@@ -51,8 +53,17 @@ public class MainActivity extends AppCompatActivity {
                 text.setText(calculator.getText());
             }
         });
-            }
 
+        Button SecondActivity = findViewById(R.id.second_activity);
+        SecondActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent runSettings = new Intent(MainActivity.this,
+                        SecondActivity.class);
+                startActivity(runSettings);
+            }
+        });
     }
+}
 
 
