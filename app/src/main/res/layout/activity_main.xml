@@ -36,17 +36,17 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/seven"
                 style="@style/calc_button"
                 android:text="7" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/eight"
                 style="@style/calc_button"
                 android:text="8" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/nine"
                 style="@style/calc_button"
                 android:text="9" />
@@ -59,20 +59,20 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/four"
                 style="@style/calc_button"
-                android:text="4" />
+                android:text="@string/four" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/five"
                 style="@style/calc_button"
-                android:text="5" />
+                android:text="@string/five" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/six"
                 style="@style/calc_button"
-                android:text="6" />
+                android:text="@string/six" />
 
         </LinearLayout>
 
@@ -82,20 +82,20 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/one"
                 style="@style/calc_button"
-                android:text="1" />
+                android:text="@string/one"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/two"
                 style="@style/calc_button"
-                android:text="2" />
+                android:text="@string/two" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/three"
                 style="@style/calc_button"
-                android:text="3" />
+                android:text="@string/three" />
 
         </LinearLayout>
 
@@ -109,22 +109,22 @@
                 style="@style/calc_button"
                 android:visibility="invisible" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/zero"
                 style="@style/calc_button"
-                android:text="0" />
+                android:text="@string/zero" />
 
-            <View
+            <com.google.android.material.button.MaterialButton
                 style="@style/calc_button"
                 android:visibility="invisible" />
 
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/second_activity"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="Second Activity"
+            android:text="@string/second_activity"
             android:textAllCaps="false"
             android:layout_weight="1" />
 
@@ -134,20 +134,20 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/plus"
                 style="@style/calc_button"
-                android:text="+" />
+                android:text="@string/plus" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/minus"
                 style="@style/calc_button"
-                android:text="-" />
+                android:text="@string/minus" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/equals"
                 style="@style/calc_button"
-                android:text="=" />
+                android:text="@string/equals"/>
 
         </LinearLayout>
 
@@ -157,20 +157,20 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/multiply"
                 style="@style/calc_button"
-                android:text="*" />
+                android:text="@string/multiply" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/division"
                 style="@style/calc_button"
-                android:text="/" />
+                android:text="@string/division" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/reset"
                 style="@style/calc_button"
-                android:text="C" />
+                android:text="@string/clear" />
 
         </LinearLayout>
 
