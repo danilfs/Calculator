@@ -11,13 +11,22 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity  {
 
     private CalculatorModel calculator;
-    private Button SecondActivity;
+    private Button secondActivity;
     private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+    secondActivity = findViewById(R.id.second_activity);
+    secondActivity.setOnClickListener(v -> {
+
+        String result = calculator.getText();
+        Intent intent = new Intent(this,SecondActivity.class);
+        intent.putExtra(SecondActivity.RESULT_EXTRA_KEY, result);
+        startActivity(intent);
+    });
 
         int[] numberIds = new int[]{
                 R.id.zero,
@@ -39,6 +48,8 @@ public class MainActivity extends AppCompatActivity  {
                 R.id.division,
                 R.id.equals
         };
+
+
 
         text = findViewById(R.id.text);
 
