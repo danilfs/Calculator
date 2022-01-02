@@ -1,67 +1,15 @@
 package com.example.mycalculator;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.widget.TextView;
-
-public class CalculatorModel implements Parcelable {
+public class CalculatorModel {
 
     private int firstArg;
     private int secondArg;
-    private TextView text;
+
     private StringBuilder inputStr = new StringBuilder();
 
-
+    private int actionSelected;
 
     private State state;
-
-    protected CalculatorModel(Parcel in) {
-        firstArg = in.readInt();
-        secondArg = in.readInt();
-    }
-
-    public static final Creator<CalculatorModel> CREATOR = new Creator<CalculatorModel>() {
-        @Override
-        public CalculatorModel createFromParcel(Parcel in) {
-            return new CalculatorModel(in);
-        }
-
-        @Override
-        public CalculatorModel[] newArray(int size) {
-            return new CalculatorModel[size];
-        }
-    };
-
-    public int getFirstArg() {
-        return firstArg;
-    }
-
-    public void setFirstArg(int firstArg) {
-        this.firstArg = firstArg;
-    }
-
-    public int getSecondArg() {
-        return secondArg;
-    }
-
-    public void setSecondArg(int secondArg) {
-        this.secondArg = secondArg;
-    }
-
-    public void setText(TextView text) {
-        this.text = text;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(firstArg);
-        dest.writeInt(secondArg);
-    }
 
     private enum State {
         firstArgInput,
@@ -125,7 +73,32 @@ public class CalculatorModel implements Parcelable {
 
     }
 
+    public void onActionPressed(int actionId) {
+        if (actionId == R.id.equals && state == State.secondArgInput && inputStr.length() > 0) {
+            secondArg = Integer.parseInt(inputStr.toString());
+            state = State.resultShow;
+            inputStr.setLength(0);
+            switch (actionSelected) {
+                case R.id.plus:
+                    inputStr.append(firstArg + secondArg);
+                    break;
+                case R.id.minus:
+                    inputStr.append(firstArg - secondArg);
+                    break;
+                case R.id.multiply:
+                    inputStr.append(firstArg * secondArg);
+                    break;
+                case R.id.division:
+                    inputStr.append(firstArg / secondArg);
+                    break;
+            }
 
+        } else if (inputStr.length() > 0 && state == State.firstArgInput && actionId != R.id.equals) {
+            firstArg = Integer.parseInt(inputStr.toString());
+            state = State.operationSelected;
+            actionSelected = actionId;
+        }
+    }
 
     public String getText() {
         StringBuilder str = new StringBuilder();
@@ -133,27 +106,40 @@ public class CalculatorModel implements Parcelable {
             default:
                 return inputStr.toString();
             case operationSelected:
-                return str.append(getFirstArg()).append(' ')
-
+                return str.append(firstArg).append(' ')
+                        .append(getOperationChar())
                         .toString();
             case secondArgInput:
-                return str.append(getFirstArg()).append(' ')
-
+                return str.append(firstArg).append(' ')
+                        .append(getOperationChar())
                         .append(' ')
                         .append(inputStr)
                         .toString();
             case resultShow:
-                return str.append(getFirstArg()).append(' ')
-
+                return str.append(firstArg).append(' ')
+                        .append(getOperationChar())
                         .append(' ')
-                        .append(getSecondArg())
+                        .append(secondArg)
                         .append(" = ")
                         .append(inputStr.toString())
                         .toString();
         }
     }
 
+    private char getOperationChar() {
+        switch (actionSelected) {
+            case R.id.plus:
+                return '+';
+            case R.id.minus:
+                return '-';
+            case R.id.multiply:
+                return '*';
+            case R.id.division:
+            default:
+                return '/';
 
+        }
+    }
 
     public void reset() {
         state = State.firstArgInput;
